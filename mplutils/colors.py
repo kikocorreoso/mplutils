@@ -4,6 +4,7 @@ Created on Sun Feb 21 18:17:28 2016
 
 @author: kiko
 """
+from __future__ import division
 
 import string
 import os
@@ -80,7 +81,7 @@ def colors_check_grayscale(fig, transform = 'luminosity', filename = None):
         data = (im[:,:,0] + im[:,:,1] + im[:,:,2]) / 3
         #data = np.average(im, -1)
     else:
-        raise print('transform value supplied not valid')
+        raise ValueError('transform value supplied not valid')
     fig1 = plt.figure(figsize = (wdt, hgt), dpi = dpi)
     ax = fig1.add_axes([0,0,1,1])
     ax.imshow(data, vmin = 0, vmax = 1, cmap = plt.get_cmap('Greys_r'))

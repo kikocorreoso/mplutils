@@ -4,6 +4,7 @@ Created on Sun Feb 21 23:43:37 2016
 
 @author: kiko
 """
+from __future__ import division
 
 def axes_set_better_defaults(ax, axes_color = '#777777', grid = False):
     """

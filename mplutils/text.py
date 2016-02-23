@@ -4,6 +4,8 @@ Text utilities to be used
 
 @author: x003621
 """
+from __future__ import division
+
 import matplotlib as mpl
 
 def text_getinfo_availablesystemfonts():
