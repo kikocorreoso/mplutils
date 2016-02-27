@@ -42,10 +42,7 @@ class colors_mpl_cnames:
     def __repr__(self):
         if self.color and len(self.cnames) == 0:
             return "No colors found with {} in color name". format(self.color)
-        out = ""
-        for key, value in self.cnames.items():
-            out += '{}:{}\n'.format(key, value)
-        return out
+        return self.cnames
     
     def _repr_html_(self):
         if self.color and len(self.cnames) == 0:
@@ -60,6 +57,24 @@ class colors_mpl_cnames:
         return html
 
 def colors_check_grayscale(fig, transform = 'luminosity', filename = None):
+    """
+    Helper function to create a grayscale image from a figure to check how the
+    image would be in grayscale in order to avoid incorrect figures when,e.g.,
+    printed in grayscale.
+    
+    Parameters
+    ----------
+    fig : a `matplotlib.figure.Figure` instance.
+    transform : str
+        String indicating the way how to transform to grayscale:
+            'luminosity' : Default value, https://en.wikipedia.org/wiki/Grayscale#Colorimetric_.28luminance-preserving.29_conversion_to_grayscale
+            'luma' : https://en.wikipedia.org/wiki/Grayscale#Luma_coding_in_video_systems
+            'average' : Mean value of R, G, and B channels
+    filename : str
+        In case you want to save the result of the grayscale image you can 
+        provide a path and a name for the file to be saved. Default value is 
+        None.
+    """
     tmp = ''.join(random.sample(string.ascii_letters + string.digits, 10))
     tmp = tmp + '.png'
     fig.savefig(tmp)
