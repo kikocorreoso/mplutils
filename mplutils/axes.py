@@ -87,6 +87,7 @@ def axes_set_axis_position(ax,
     else:
         len_spines = len(spines)
     if np.isscalar(pan):
+        pan = np.repeat(pan, len_spines)
         len_pan = 1
     else:
         len_pan = len(pan)
